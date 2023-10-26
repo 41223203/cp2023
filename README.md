@@ -3,7 +3,7 @@ cmsimde template uses mdecycu/cmsimde as submodule
 
 On Replit:
 
-for cmsite: git submodule update --init --recursive 
+for cmsite:  git submodule update --init --recursive 
 
 for cmsimde_site: cmsimde is as directory not submodule
 
