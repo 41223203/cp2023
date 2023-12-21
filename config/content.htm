@@ -280,7 +280,608 @@ void draw_japan_flag(gdImagePtr img) {
     // 繪製太陽內部
     gdImageFilledEllipse(img, center_x, center_y, sun_radius * 3, sun_radius * 3, red);
 }</pre>
+<p>clear</p>
+<p>cd downloads</p>
+<p>cc japan.c -lgd -lm</p>
+<p>./a.out</p>
 <p><img alt="" height="267" src="/images/japan_flag.png" width="400"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_chinese_flag(gdImagePtr img);
+
+int main() {
+    int width = 300; // 國旗寬度
+    int height = 200; // 國旗高度
+
+    gdImagePtr im = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(im, 0);
+
+    draw_chinese_flag(im);
+
+    FILE *outputFile = fopen("./../images/proc_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "打开输出文件时出错。\n");
+        return 1;
+    }
+
+    gdImagePngEx(im, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(im);
+
+    return 0;
+}
+
+// 声明 draw_star 函数
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);
+
+void draw_chinese_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, yellow;
+
+    // 國旗顏色
+    red = gdImageColorAllocate(img, 255, 0, 0); // 紅色背景
+    yellow = gdImageColorAllocate(img, 255, 255, 0); // 黃色星星
+
+    // 畫紅色背景
+    gdImageFilledRectangle(img, 0, 0, width, height, red);
+
+    // 設置星星的大小和位置
+    int star_size = (int)(0.28 * height);
+    int star_x = (int)(0.165 * width);
+    int star_y = (int)(0.265 * height);
+
+    // 畫大星星
+    draw_star(img, star_x, star_y, star_size, yellow, 11.0);
+
+    // 繪製小星星，位置根據實際國旗比例計算
+    double radius = 0.15 * height;
+    double angle = 360 / 7 * M_PI / 179.0;
+    double rotation = -M_PI / 7.5;
+    int cx = (int)(0.32 * width);
+    int cy = (int)(0.27 * height);
+
+    for (int i = -1; i &lt; 3; i++) {
+        int x = (int)(cx + radius * cos(i * angle + rotation));
+        int y = (int)(cy + radius * sin(i * angle + rotation));
+        draw_star(img, x, y, 19, yellow, M_PI / 5.0);
+    }
+}
+
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+    gdPoint points[10];
+
+    // 计算星形的五个外点和五个内点
+    double outer_radius = size / 2;
+    double inner_radius = size / 6;
+    double angle = M_PI / 5.0;
+
+    for (int i = 0; i &lt; 10; i++) {
+        double radius = (i % 2 == 0) ? outer_radius : inner_radius;
+        double theta = rotation_angle + i * angle;
+        points[i].x = x + radius * cos(theta);
+        points[i].y = y + radius * sin(theta);
+    }
+
+    // 使用 gdImageFilledPolygon 绘制星形
+    gdImageFilledPolygon(img, points, 10, color);
+}</pre>
+<p>cc chinese.c -lgd -lm</p>
+<p>./a.out</p>
+<p></p>
+<p><img alt="" height="333" src="data:image/png;base64,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" width="500"/></p>
+<p></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_uk_flag(gdImagePtr img);
+void fillTriangle(gdImagePtr img, int x1, int y1, int x2, int y2, int x3, int y3, int color);
+
+int main() {
+    // 设置国旗的宽和高
+    int width = 1200;
+    int height = width / 2;
+
+    // 创建图像
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    // 绘制英国国旗
+    draw_uk_flag(img);
+
+    // 将图像保存到文件
+    FILE *outputFile = fopen("./../images/uk_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "打开输出文件时发生错误。\n");
+        return 1;
+    }
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}
+
+
+
+void draw_uk_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+
+    int red, white, blue;
+    red = gdImageColorAllocate(img, 204, 0, 0);       // 红色
+    white = gdImageColorAllocate(img, 255, 255, 255); // 白色
+    blue = gdImageColorAllocate(img, 0, 0, 153);      // 蓝色
+
+    gdImageFilledRectangle(img, 0, 0, width, height, blue);
+
+
+  int x1, y1, x2, y2, x3, y3;
+  {
+    int line_thickness = 100;
+    gdImageSetThickness(img, line_thickness);
+
+    int x1, y1, x2, y2, x3, y3;
+
+    // 绘制白色斜线
+    x1 = 0;
+    y1 = 600;
+    x2 = 1200;
+    y2 = 0;
+    gdImageLine(img, x1, y1, x2, y2, white);
+
+    x1 = 0;
+    y1 = 0;
+    x2 = 1200;
+    y2 = 600;
+    gdImageLine(img, x1, y1, x2, y2, white);
+}
+  {
+    int line_thickness = 33;
+    gdImageSetThickness(img, line_thickness);
+
+
+    // 绘制红色斜线
+    x1 = 566;
+    y1 = 300;
+    x2 = 1166;
+    y2 = 0;
+    gdImageLine(img, x1, y1, x2, y2, red);
+
+    x1 = 1233;
+    y1 = 600;
+    x2 = 633;
+    y2 = 300;
+    gdImageLine(img, x1, y1, x2, y2, red);
+
+    x1 = 566;
+    y1 = 300;
+    x2 = -33;
+    y2 = 0;
+    gdImageLine(img, x1, y1, x2, y2, red);
+
+    x1 = 600;
+    y1 = 316.5;
+    x2 = 0;
+    y2 = 616.5;
+    gdImageLine(img, x1, y1, x2, y2, red);
+  }
+  {
+  int line_thickness = 33;
+  gdImageSetThickness(img, line_thickness);
+
+  int x1, y1, x2, y2, x3, y3;
+
+  // 绘制  斜线
+  x1 = 0;
+  y1 = 600;
+  x2 = 1200;
+  y2 = 0;
+  gdImageLine(img, x1, y1, x2, y2, red );
+
+
+  x1 = 1200;
+    y1 = 16.5;
+    x2 = 600;
+    y2 = 316.5;
+    gdImageLine(img, x1, y1, x2, y2, white);
+
+
+  x1 = 0;
+    y1 = 583.5;
+    x2 = 600;
+    y2 = 283.5;
+    gdImageLine(img, x1, y1, x2, y2, white);
+
+
+  }
+
+    // 绘制白色十字
+    int cross_width = width / 32;
+    int cross_arm_width = width / 32;
+    int center_x = width / 2;
+    int center_y = height / 2;
+
+    gdImageFilledRectangle(img, center_x + 2.7 * cross_width, 0, center_x - 2.7 * cross_width, height, white);
+    gdImageFilledRectangle(img, 0, center_y + 2.7 * cross_arm_width, width, center_y - 2.7 * cross_arm_width, white);
+
+    // 绘制红色十字
+    gdImageFilledRectangle(img, center_x + 1.5 * cross_width, 0, center_x - 1.5 * cross_width, height, red);
+    gdImageFilledRectangle(img, 0, center_y + 1.5 * cross_arm_width, width, center_y - 1.5 * cross_arm_width, red);
+}</pre>
+<p></p>
+<div class="line number1 index0 alt2">
+<p>cc U.K.c -lgd -lm</p>
+<p>./a.out</p>
+</div>
+<div class="line number138 index137 alt1"><code class="cpp plain"><img alt="" height="200" src="data:image/png;base64,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" width="400"/></code></div>
+<div class="line number138 index137 alt1"><code class="cpp plain"></code></div>
+<div class="line number138 index137 alt1">
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+#define WIDTH 900
+#define HEIGHT 600
+#define FILENAME "south_korea_flag.png"
+
+int main() {
+    gdImagePtr im;
+    FILE *pngout;
+    int white, black, red, blue;
+
+    im = gdImageCreate(WIDTH, HEIGHT);
+
+    white = gdImageColorAllocate(im, 255, 255, 255);
+    black = gdImageColorAllocate(im, 0, 0, 0);
+    red = gdImageColorAllocate(im, 205, 0, 0);
+    blue = gdImageColorAllocate(im, 0, 56, 168);
+
+    // Background (white)
+    gdImageFilledRectangle(im, 0, 0, WIDTH, HEIGHT , white);
+
+    // Blue Circle (Yin-Yang Symbol)
+    gdImageFilledArc(im, WIDTH / 2, HEIGHT / 2, WIDTH / 3, HEIGHT / 2, 210, 30, red, gdArc);
+
+    // Red Circle (Yin-Yang Symbol)
+    gdImageFilledArc(im, WIDTH / 2, HEIGHT / 2, WIDTH / 3, HEIGHT / 2, 30, 210, blue, gdArc);
+
+  int circleX = 385;    // 圓心的 X 座標
+  int circleY = 262.5;   // 圓心的 Y 座標
+  int circleRadius = 75;     
+
+  // 繪製圓形
+  gdImageFilledEllipse(im, circleX, circleY, circleRadius * 2, circleRadius * 2, red);
+
+  int circleX2 = 515;    // 圓心的 X 座標
+
+ int circleY2 = 337.5;
+
+  // 繪製圓形
+  gdImageFilledEllipse(im, circleX2, circleY2, circleRadius * 2, circleRadius * 2, blue);
+
+  {
+
+
+  // 起點和終點位置
+
+  int startX = 340;    
+  // 線的起點 X 座標
+
+  int startY = 90;   
+  // 線的起點 Y 座標
+
+  int endX = 200;     
+  // 線的終點 X 座標
+
+  int endY = 260;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -35, startY -10, endX -35, endY -10, black);
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -70, startY -20, endX -70, endY -20, black);
+
+  int startX2 = 213;    
+  // 線的起點 X 座標
+
+  int startY2 = 270;   
+  // 線的起點 Y 座標
+
+  int endX2 = 133;     
+  // 線的終點 X 座標
+
+  int endY2 = 210;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX2 +3, startY2, endX2 +3, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 -17, startY2 +9 , endX2 -17, endY2 +9 , white);
+
+  gdImageSetThickness(im, lineWidth );
+gdImageLine(im, startX2 +115, startY2 -145, endX2 +115, endY2 -145, white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +120, startY2 -155, endX2 +120, endY2 -155, white);
+
+  gdImageSetThickness(im, lineWidth +12);
+gdImageLine(im, startX2 +145, startY2 -155, endX2 +145, endY2 -155, white);
+}
+  {
+    // 起點和終點位置
+
+  int startX = 330;    
+  // 線的起點 X 座標
+
+  int startY = 520;   
+  // 線的起點 Y 座標
+
+  int endX = 190;     
+  // 線的終點 X 座標
+
+  int endY = 350;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -35, startY +10, endX -35, endY +10, black);
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -70, startY +20, endX -70, endY +20, black);
+
+  int startX2 = 213;    
+  // 線的起點 X 座標
+
+  int startY2 = 330;   
+  // 線的起點 Y 座標
+
+  int endX2 = 133;     
+  // 線的終點 X 座標
+
+  int endY2 = 390;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth +8);
+  gdImageLine(im, startX2 -11, startY2, endX2 -11, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 -30, startY2 -9 , endX2 -30, endY2 -9 , white);
+
+  gdImageSetThickness(im, lineWidth );
+gdImageLine(im, startX2 +100, startY2 +150, endX2 +100, endY2 +150, white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +120, startY2 +155, endX2 +120, endY2 +155, white);
+
+  gdImageSetThickness(im, lineWidth +14);
+gdImageLine(im, startX2 +145, startY2 +157, endX2 +145, endY2 +157, white);
+
+    gdImageSetThickness(im, lineWidth -10);
+gdImageLine(im, 232, 426, 206, 448, white);
+
+  }
+
+  {
+    // 起點和終點位置
+
+  int startX = 564;    
+  // 線的起點 X 座標
+
+  int startY = 520;   
+  // 線的起點 Y 座標
+
+  int endX = 704;     
+  // 線的終點 X 座標
+
+  int endY = 350;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX +70, startY +20, endX +70, endY +20, black);
+
+    // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+
+    // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX +35, startY +10, endX +35, endY +10, black);
+
+gdImageSetThickness(im, lineWidth -10);
+gdImageLine(im, 624, 400, 734, 490, white);
+
+  int startX2 = 553;    
+  // 線的起點 X 座標
+
+  int startY2 = 330;   
+  // 線的起點 Y 座標
+
+  int endX2 = 633;     
+  // 線的終點 X 座標
+
+  int endY2 = 390;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth +8);
+  gdImageLine(im, startX2 +139, startY2, endX2 +139, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 +157, startY2 -9 , endX2 +157, endY2 -9 , white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +25, startY2 +155, endX2 +25, endY2 +155, white);
+
+  gdImageSetThickness(im, lineWidth +30);
+gdImageLine(im, startX2 -3, startY2 +170, endX2 , endY2 +170, white);
+  }
+  {
+    // 起點和終點位置
+
+  int startX = 330;    
+  // 線的起點 X 座標
+
+  int startY = 520;   
+  // 線的起點 Y 座標
+
+  int endX = 190;     
+  // 線的終點 X 座標
+
+  int endY = 350;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -35, startY +10, endX -35, endY +10, black);
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -70, startY +20, endX -70, endY +20, black);
+
+  int startX2 = 213;    
+  // 線的起點 X 座標
+
+  int startY2 = 330;   
+  // 線的起點 Y 座標
+
+  int endX2 = 133;     
+  // 線的終點 X 座標
+
+  int endY2 = 390;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth +8);
+  gdImageLine(im, startX2 -11, startY2, endX2 -11, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 -30, startY2 -9 , endX2 -30, endY2 -9 , white);
+
+  gdImageSetThickness(im, lineWidth );
+gdImageLine(im, startX2 +100, startY2 +150, endX2 +100, endY2 +150, white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +120, startY2 +155, endX2 +120, endY2 +155, white);
+
+  gdImageSetThickness(im, lineWidth +14);
+gdImageLine(im, startX2 +145, startY2 +157, endX2 +145, endY2 +157, white);
+
+    gdImageSetThickness(im, lineWidth -10);
+gdImageLine(im, 232, 426, 206, 448, white);
+
+  }
+  {
+    // 起點和終點位置
+
+  int startX = 564;    
+  // 線的起點 X 座標
+
+  int startY = 97;   
+  // 線的起點 Y 座標
+
+  int endX = 704;     
+  // 線的終點 X 座標
+
+  int endY = 267;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX +70, startY -20, endX +70, endY -20, black);
+
+    // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+
+    gdImageSetThickness(im, lineWidth -10);
+gdImageLine(im, 624, 212, 734, 118, white);
+
+    // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX +35, startY -10, endX +35, endY -10, black);
+
+  int startX2 = 553;    
+  // 線的起點 X 座標
+
+  int startY2 = 277;   
+  // 線的起點 Y 座標
+
+  int endX2 = 633;     
+  // 線的終點 X 座標
+
+  int endY2 = 217;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth +8);
+  gdImageLine(im, startX2 +134, startY2, endX2 +134, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 +157, startY2 +9 , endX2 +157, endY2 +9 , white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +25, startY2 -155, endX2 +25, endY2 -155, white);
+
+    gdImageSetThickness(im, lineWidth +30);
+gdImageLine(im, startX2 -5, startY2 -155, endX2 -5, endY2 -155, white);
+
+  }
+
+    // Save image
+FILE *outputFile = fopen("./../images/korea_flag.png", "wb");
+if (outputFile == NULL) {
+    fprintf(stderr, "Error opening the output file.\n");
+    return 1;
+}
+  gdImagePngEx(im, outputFile, 9);
+      fclose(outputFile);
+      gdImageDestroy(im);
+      return 0;
+  }</pre>
+<p>cc korea.c -lgd -lm</p>
+<p>./a.out</p>
+<p></p>
+</div>
 <h1>w12</h1>
 <p><img alt="" height="450" src="/images/w12.png" width="600"/></p>
 <p></p>
