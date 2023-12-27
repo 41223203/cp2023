@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w14.html'>w14</a><li><a href='brython.html'>brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li><a href='brython.html'>brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,21 +142,64 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w12 << <a href='w12.html'>Previous</a> <a href='w14.html'>Next</a> >> w14<br /><h1>w13</h1>
-<p>/ 包含標準輸出入程式庫的標頭文件<br/>#include &lt;stdio.h&gt;</p>
-<p>// 主函式<br/>int main() {<br/> // Open a file to write displacement and velocity data<br/> FILE *outputFile = fopen("motion_data.txt", "w");<br/> if (!outputFile) {<br/> fprintf(stderr, "Failed to create data file.\n");<br/> return 1;<br/> }</p>
-<p>// Simulate motion for 10 seconds and calculate displacement and velocity, while writing data to the file<br/> double x = 0.2; // Initial displacement<br/> double v = 0.0; // Initial velocity<br/> double dt = 0.01; // Time step<br/> double t = 0.0; // Time</p>
-<p>while (t &lt;= 10.0) {<br/> double acceleration = (-10.0 * x - 0.5 * v) / 1.0; // Modified system parameters here<br/> v += acceleration * dt;<br/> x += v * dt;</p>
-<p>fprintf(outputFile, "%lf %lf %lf\n", t, x, v);</p>
-<p>t += dt;<br/> }</p>
-<p>// Close the data file<br/> fclose(outputFile);</p>
-<p>// Start a Gnuplot process using popen<br/> FILE *gnuplotPipe = popen("gnuplot -persistent", "w");<br/> if (!gnuplotPipe) {<br/> fprintf(stderr, "Failed to start Gnuplot.\n");<br/> return 1;<br/> }</p>
-<p>// Use Gnuplot plotting commands, specify font and output as PNG<br/> fprintf(gnuplotPipe, "set terminal pngcairo enhanced font 'default,10' size 800,400\n");<br/> fprintf(gnuplotPipe, "set output './../images/motion_plot.png'\n");<br/> fprintf(gnuplotPipe, "set title 'Displacement and Velocity vs. Time'\n");<br/> fprintf(gnuplotPipe, "set xlabel 'Time (s)'\n");<br/> fprintf(gnuplotPipe, "set ylabel 'Displacement (m)'\n");<br/> fprintf(gnuplotPipe, "plot 'motion_data.txt' using 1:2 with lines lw 2 title 'Displacement', \<br/> 'motion_data.txt' using 1:3 with lines lw 2 title 'Velocity'\n");</p>
-<p>// Close the Gnuplot process<br/> fprintf(gnuplotPipe, "exit\n");<br/> pclose(gnuplotPipe);</p>
-<p>return 0;<br/>}</p>
-<p></p>
+    <div id="tipue_search_content">w12 << <a href='w12.html'>Previous</a> <a href='w15.html'>Next</a> >> w15<br /><h1>w13</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
+#include &lt;stdio.h&gt;
+
+// 主函式
+int main() {
+    // Open a file to write displacement and velocity data
+    FILE *outputFile = fopen("motion_data.txt", "w");
+    if (!outputFile) {
+        fprintf(stderr, "Failed to create data file.\n");
+        return 1;
+    }
+
+    // Simulate motion for 10 seconds and calculate displacement and velocity, while writing data to the file
+    double x = 0.2;  // Initial displacement
+    double v = 0.0;  // Initial velocity
+    double dt = 0.01; // Time step
+    double t = 0.0;  // Time
+
+    while (t &lt;= 10.0) {
+        double acceleration = (-10.0 * x - 0.5 * v) / 1.0; // Modified system parameters here
+        v += acceleration * dt;
+        x += v * dt;
+
+        fprintf(outputFile, "%lf %lf %lf\n", t, x, v);
+
+        t += dt;
+    }
+
+    // Close the data file
+    fclose(outputFile);
+
+    // Start a Gnuplot process using popen
+    FILE *gnuplotPipe = popen("gnuplot -persistent", "w");
+    if (!gnuplotPipe) {
+        fprintf(stderr, "Failed to start Gnuplot.\n");
+        return 1;
+    }
+
+    // Use Gnuplot plotting commands, specify font and output as PNG
+    fprintf(gnuplotPipe, "set terminal pngcairo enhanced font 'default,10' size 800,400\n");
+    fprintf(gnuplotPipe, "set output './../images/motion_plot.png'\n");
+    fprintf(gnuplotPipe, "set title 'Displacement and Velocity vs. Time'\n");
+    fprintf(gnuplotPipe, "set xlabel 'Time (s)'\n");
+    fprintf(gnuplotPipe, "set ylabel 'Displacement (m)'\n");
+    fprintf(gnuplotPipe, "plot 'motion_data.txt' using 1:2 with lines lw 2 title 'Displacement', \
+                             'motion_data.txt' using 1:3 with lines lw 2 title 'Velocity'\n");
+
+    // Close the Gnuplot process
+    fprintf(gnuplotPipe, "exit\n");
+    pclose(gnuplotPipe);
+
+    return 0;
+}</pre>
+<p><span>cd downloads</span><br/><span>cc<span> </span></span><span>euler_gnuplot_msd_ex1.c</span><span><span> </span>-lgd -lm</span><br/><span>./a.out</span></p>
 <p><img alt="" height="271" src="./../images/motion_plot.png" width="542"/></p>
-<br />w12 << <a href='w12.html'>Previous</a> <a href='w14.html'>Next</a> >> w14</div>
+<p></p>
+<br />w12 << <a href='w12.html'>Previous</a> <a href='w15.html'>Next</a> >> w15</div>
         
     <!-- footer -->
       <div class="container">
