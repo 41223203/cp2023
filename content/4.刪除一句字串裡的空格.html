@@ -2,6 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -95,6 +96,7 @@ img.add_border {
 </head>
 <body>
 <div class='container'><nav>
+        
     <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -140,4 +142,66 @@ img.add_border {
           </div>
           
         </header>
-    </nav><section><h1>SMap</h1><div id="tipue_search_content"></div><ul><li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li><a href='ANSIC.html'>ANSIC</a><ul><li><a href='1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”.html'>1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='brython.html'>brython</a></li></ul></section></div></body></html>
+    <div id="tipue_search_content">2.猜數字 << <a href='2.猜數字.html'>Previous</a> <a href='5.輸入年份產生日期.html'>Next</a> >> 5.輸入年份產生日期<br /><h1>4.刪除一句字串裡的空格</h1>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;string.h&gt;</p>
+<p>#include &lt;ctype.h&gt;</p>
+<p>// 移除字串中的空白字符，同時使用回調函數進行額外的修改<br/>void remove_whitespace(char *str, void (*modify)(char *)) {<br/> int i, j = 0;<br/> for (i = 0; str[i] != '\0'; i++) {<br/> if (!isspace(str[i])) {<br/> str[j] = str[i];<br/> j++;<br/> } else {<br/> modify(&amp;str[i]);<br/> }<br/> }<br/> str[j] = '\0';<br/>}</p>
+<p>// 將空白字符替換為 '\0' 的回調函數<br/>void remove_space(char *ch) {<br/> *ch = '\0';<br/>}</p>
+<p>int main() {<br/> char str[100];<br/> printf("輸入一個字串：");<br/> fgets(str, sizeof(str), stdin);<br/> str[strcspn(str, "\n")] = '\0'; // 移除換行符號<br/> printf("原始字串：%s\n", str);</p>
+<p>// 使用回調函數移除空白字符<br/> remove_whitespace(str, remove_space);</p>
+<p>printf("沒有空白字符的字串：%s\n", str);</p>
+<p>return 0;<br/>}</p>
+<p><img alt="" height="235" src="./../images/p4.png" width="500"/></p>
+<p></p>
+<br />2.猜數字 << <a href='2.猜數字.html'>Previous</a> <a href='5.輸入年份產生日期.html'>Next</a> >> 5.輸入年份產生日期</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
