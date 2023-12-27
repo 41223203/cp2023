@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”.html'>1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='3.列印您的姓名、生日和電話.html'>3.列印您的姓名、生日和電話</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='brython.html'>brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='1.寫一個 C 程序，使用哈希 (#) 列印一個區塊 F，其中 F 的高度為 6 個字符，寬度為 5 個和 4 個字符。並且還列印一個非常大的“C”.html'>1.寫一個 C 程序，使用哈希 (#) 列印一個區塊 F，其中 F 的高度為 6 個字符，寬度為 5 個和 4 個字符。並且還列印一個非常大的“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='3.列印您的姓名、生日和電話.html'>3.列印您的姓名、生日和電話</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='C_ex.html'>C_ex</a><li><a href='brython.html'>brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -143,15 +143,46 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">3.列印您的姓名、生日和電話 << <a href='3.列印您的姓名、生日和電話.html'>Previous</a> <a href='5.輸入年份產生日期.html'>Next</a> >> 5.輸入年份產生日期<br /><h1>4.刪除一句字串裡的空格</h1>
-<p>#include &lt;stdio.h&gt;</p>
-<p>#include &lt;string.h&gt;</p>
-<p>#include &lt;ctype.h&gt;</p>
-<p>// 移除字串中的空白字符，同時使用回調函數進行額外的修改<br/>void remove_whitespace(char *str, void (*modify)(char *)) {<br/> int i, j = 0;<br/> for (i = 0; str[i] != '\0'; i++) {<br/> if (!isspace(str[i])) {<br/> str[j] = str[i];<br/> j++;<br/> } else {<br/> modify(&amp;str[i]);<br/> }<br/> }<br/> str[j] = '\0';<br/>}</p>
-<p>// 將空白字符替換為 '\0' 的回調函數<br/>void remove_space(char *ch) {<br/> *ch = '\0';<br/>}</p>
-<p>int main() {<br/> char str[100];<br/> printf("輸入一個字串：");<br/> fgets(str, sizeof(str), stdin);<br/> str[strcspn(str, "\n")] = '\0'; // 移除換行符號<br/> printf("原始字串：%s\n", str);</p>
-<p>// 使用回調函數移除空白字符<br/> remove_whitespace(str, remove_space);</p>
-<p>printf("沒有空白字符的字串：%s\n", str);</p>
-<p>return 0;<br/>}</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+#include &lt;string.h&gt;
+
+#include &lt;ctype.h&gt;
+
+// 移除字串中的空白字符，同時使用回調函數進行額外的修改
+void remove_whitespace(char *str, void (*modify)(char *)) {
+int i, j = 0;
+for (i = 0; str[i] != '\0'; i++) {
+if (!isspace(str[i])) {
+str[j] = str[i];
+j++;
+} else {
+modify(&amp;str[i]);
+}
+}
+str[j] = '\0';
+}
+
+// 將空白字符替換為 '\0' 的回調函數
+void remove_space(char *ch) {
+*ch = '\0';
+}
+
+int main() {
+char str[100];
+printf("輸入一個字串：");
+fgets(str, sizeof(str), stdin);
+str[strcspn(str, "\n")] = '\0'; // 移除換行符號
+printf("原始字串：%s\n", str);
+
+// 使用回調函數移除空白字符
+remove_whitespace(str, remove_space);
+
+printf("沒有空白字符的字串：%s\n", str);
+
+return 0;
+}</pre>
+<p></p>
 <p><img alt="" height="235" src="./../images/p4.png" width="500"/></p>
 <p></p>
 <br />3.列印您的姓名、生日和電話 << <a href='3.列印您的姓名、生日和電話.html'>Previous</a> <a href='5.輸入年份產生日期.html'>Next</a> >> 5.輸入年份產生日期</div>

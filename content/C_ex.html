@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H1">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,36 +142,139 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">5.輸入年份產生日期 << <a href='5.輸入年份產生日期.html'>Previous</a> <a href='7.輸入任意數的平方.html'>Next</a> >> 7.輸入任意數的平方<br /><h1>6.建立一個99乘法表</h1>
+    <div id="tipue_search_content">10.判斷是否為醜數 << <a href='10.判斷是否為醜數.html'>Previous</a> <a href='brython.html'>Next</a> >> brython<br /><h1>C_ex</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-
+void main()
+{
+ /* 印出 Hello */
+printf("Hello World!");
+}</pre>
+<p><img alt="" height="235" src="./../images/hello-1.png" width="500"/><br/><br/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 int main()
 {
-int j, i, n;
-
-// 提示用戶輸入表格範圍的最後一個數字
-printf("輸入要顯示的乘法表範圍（起始數字為1）：");
-scanf("%d", &amp;n);
-
-// 顯示從1到n的乘法表
-printf("1 到 %d 的乘法表：\n", n);
-
-// 雙層循環用於產生乘法表
-for (i = 1; i &lt;= 10; i++)
-{
-for (j = 1; j &lt;= n; j++)
-{
-// 顯示每個乘法表運算式及結果
-printf("%dx%d = %d, ", j, i, i * j);
-}
-printf("\n"); // 換行以顯示下一個數字的乘法表
-}
-
+/* 印出 Hello World! Bye Bye */
+printf("Hello World! ");
+printf("Bye ");
+printf("Bye");
 return 0;
 }</pre>
-<div class="line number148 index147 alt1"><code class="csharp plain"><img alt="" height="235" src="./../images/p6.png" width="500"/><br/></code></div>
-<div class="line number148 index147 alt1"><code class="csharp plain"></code></div>
-<br />5.輸入年份產生日期 << <a href='5.輸入年份產生日期.html'>Previous</a> <a href='7.輸入任意數的平方.html'>Next</a> >> 7.輸入任意數的平方</div>
+<p><img alt="" height="235" src="./../images/hello-2.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main()
+{
+int a = 1;
+int A = 8;
+int b = 2, c;
+c = A - a + b;
+/* 輸出 a, A, b, c 到螢幕 */
+printf( "a = %d, A = %d, b = %d, c = %d ", a, A, b, c );
+return 0;
+}</pre>
+<p><img alt="" height="234" src="./../images/hello-3.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+void main()
+{
+float a = 0.5;
+double b = 1.2;
+int c = 3;
+b = b + a + c;
+/* 輸出 a, b, c 到螢幕 */
+printf( " a = %3.1f, b = %3.1f, c = %d ", a ,b, c );
+}</pre>
+<p><img alt="" height="233" src="./../images/hello-4.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main()
+{
+char x, y;
+x = 'a';
+y = (char)97;
+/* 輸出 x, y, x, 最後一個是以 ASCII 值顯示 y */
+printf( " x = %c, y = %c, ASCII of y = %d", x, y, y );
+return 0;
+}</pre>
+<p><img alt="" height="235" src="./../images/hello-5.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 64;
+    int b = 0x40;
+    long c = 64L;
+
+    printf("%d,%d,%ld", a, b, c);  // 使用 %ld 來打印 long 整數型別的變數 c
+
+    return 0;
+}</pre>
+<p><img alt="" height="236" src="./../images/hello-6.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main()
+{
+int i;
+printf("Input an integer:");
+scanf( "%d", &amp;i ); /* ch 前面加個 &amp;(位址運算元) */
+printf( "the number is %d", i );
+return 0;
+}#include &lt;stdio.h&gt;
+int main()
+{
+int i;
+printf("Input an integer:");
+scanf( "%d", &amp;i ); /* ch 前面加個 &amp;(位址運算元) */
+printf( "the number is %d", i );
+return 0;
+}</pre>
+<p><img alt="" height="235" src="./../images/hello-7.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include&lt;stdio.h&gt;
+int main()
+{
+int a,b;
+a = 10; b = 3;
+printf( "%d \n", a * b );
+printf( "%d \n", a / b );
+printf( "%d \n", a + b );
+printf( "%d \n", a - b );
+printf( "%d \n", a % b );
+return 0;
+}</pre>
+<p><img alt="" height="234" src="./../images/hello-8.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main()
+{
+int a = 10, b = 5;
+printf( " a == b is %d \n", a == b );
+printf( " a &gt; b is %d \n", a &gt; b );
+printf( " a &lt; b is %d \n", a &lt; b );
+printf( " a &gt;= b is %d \n", a &gt;= b );
+printf( " a &lt;= b is %d \n", a &lt;= b );
+printf( " a != b is %d \n", a != b );
+printf( "\n" );
+b = 10;
+printf( " a == b is %d \n", a == b );
+printf( " a &gt; b is %d \n", a &gt; b );
+printf( " a &lt; b is %d \n", a &lt; b );
+printf( " a &gt;= b is %d \n", a &gt;= b );
+printf( " a &lt;= b is %d \n", a &lt;= b );
+printf( " a != b is %d \n", a != b );
+return 0;
+}</pre>
+<p><img alt="" height="236" src="./../images/hello-9.png" width="500"/></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include&lt;stdio.h&gt;
+void main()
+{
+int a,b;
+a = 15;
+b = 1;
+printf("%d \n", a | b ); /* a OR b */
+printf("%d \n", a &amp; b ); /* a AND b */
+printf("%d \n", a ^ b ); /* a XOR b */
+printf("%d \n", a &lt;&lt; 1 ); /* a 位元左移 1 位 */
+printf("%d \n", a &gt;&gt; 1 ); /* a 位元右移一位 */
+printf("%d \n", ~a ); /* A 的補數運算 */
+}</pre>
+<p><img alt="" height="236" src="./../images/hello-10.png" width="500"/></p>
+<p></p>
+</div>
+<br />10.判斷是否為醜數 << <a href='10.判斷是否為醜數.html'>Previous</a> <a href='brython.html'>Next</a> >> brython</div>
         
     <!-- footer -->
       <div class="container">

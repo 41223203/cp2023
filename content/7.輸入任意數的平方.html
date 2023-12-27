@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”.html'>1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='3.列印您的姓名、生日和電話.html'>3.列印您的姓名、生日和電話</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='brython.html'>brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='1.寫一個 C 程序，使用哈希 (#) 列印一個區塊 F，其中 F 的高度為 6 個字符，寬度為 5 個和 4 個字符。並且還列印一個非常大的“C”.html'>1.寫一個 C 程序，使用哈希 (#) 列印一個區塊 F，其中 F 的高度為 6 個字符，寬度為 5 個和 4 個字符。並且還列印一個非常大的“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='3.列印您的姓名、生日和電話.html'>3.列印您的姓名、生日和電話</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='C_ex.html'>C_ex</a><li><a href='brython.html'>brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -143,7 +143,31 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">6.建立一個99乘法表 << <a href='6.建立一個99乘法表.html'>Previous</a> <a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>Next</a> >> 8.用C語言編寫一格城市來列印目前日期和時間<br /><h1>7.輸入任意數的平方</h1>
-<div class="line number148 index147 alt1"><code class="csharp plain">#include &lt;stdio.h&gt;<br/><br/>double square(double num)<br/>{<br/> return (num * num);<br/>}<br/><br/>int main()<br/>{<br/> int num;<br/> double n;<br/><br/> printf("\n\n 函數：計算任意數的平方 :\n");<br/> printf("------------------------------------------------\n"); <br/><br/> printf("輸入任意數以計算平方 : ");<br/> scanf("%d", &amp;num);<br/><br/> n = square(num);<br/> printf("%d 的平方是 : %.2f\n", num, n); <br/><br/> return 0;<br/>}</code></div>
+<div class="line number148 index147 alt1">
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+double square(double num)
+{
+return (num * num);
+}
+
+int main()
+{
+int num;
+double n;
+
+printf("\n\n 函數：計算任意數的平方 :\n");
+printf("------------------------------------------------\n");
+
+printf("輸入任意數以計算平方 : ");
+scanf("%d", &amp;num);
+
+n = square(num);
+printf("%d 的平方是 : %.2f\n", num, n);
+
+return 0;
+}</pre>
+</div>
 <div class="line number148 index147 alt1"><code class="csharp plain"><img alt="" height="234" src="./../images/p7.png" width="500"/></code></div>
 <div class="line number148 index147 alt1"><code class="csharp plain"></code></div>
 <br />6.建立一個99乘法表 << <a href='6.建立一個99乘法表.html'>Previous</a> <a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>Next</a> >> 8.用C語言編寫一格城市來列印目前日期和時間</div>

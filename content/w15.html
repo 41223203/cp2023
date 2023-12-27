@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”.html'>1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='3.列印您的姓名、生日和電話.html'>3.列印您的姓名、生日和電話</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='brython.html'>brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='1.寫一個 C 程序，使用哈希 (#) 列印一個區塊 F，其中 F 的高度為 6 個字符，寬度為 5 個和 4 個字符。並且還列印一個非常大的“C”.html'>1.寫一個 C 程序，使用哈希 (#) 列印一個區塊 F，其中 F 的高度為 6 個字符，寬度為 5 個和 4 個字符。並且還列印一個非常大的“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='3.列印您的姓名、生日和電話.html'>3.列印您的姓名、生日和電話</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='C_ex.html'>C_ex</a><li><a href='brython.html'>brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -143,36 +143,164 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">w13 << <a href='w13.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC<br /><h1>w15</h1>
-<p>#include &lt;stdio.h&gt; <br/>#include &lt;gd.h&gt; <br/>#include &lt;math.h&gt;</p>
-<p>void draw_roc_flag(gdImagePtr img); <br/>void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);</p>
-<p>int main() { <br/> // width 3: height 2 <br/> int width = 1200; <br/> // 國旗長寬比為 3:2 <br/> int height = (int)(width*2.0 / 3.0);</p>
-<p>gdImagePtr img = gdImageCreateTrueColor(width, height); <br/> gdImageAlphaBlending(img, 0);</p>
-<p>draw_roc_flag(img);</p>
-<p>FILE *outputFile = fopen("roc_flag_in_gd.png", "wb"); <br/> if (outputFile == NULL) { <br/> fprintf(stderr, "Error opening the output file.\n"); <br/> return 1; <br/> } <br/> gdImagePngEx(img, outputFile, 9); <br/> fclose(outputFile); <br/> gdImageDestroy(img); <br/> return 0; <br/>}</p>
-<p>void draw_roc_flag(gdImagePtr img) { <br/> int width = gdImageSX(img); <br/> int height = gdImageSY(img); <br/> int red, white, blue; <br/> // 白日位於青天面積正中央, 因此中心點座標為長寬各 1/4 處 <br/> int center_x = (int)(width/4); <br/> int center_y = (int)(height/4); <br/> // gdImageFilledEllipse 需以長寬方向的 diameter 作圖 <br/> // 由於中央白日圓形的半徑為青天寬度的 1/8 <br/> // 因此中央白日圓形的直徑為青天寬度的 1/4, 也就是國旗寬度的 1/8 <br/> // 而且白日十二道光芒的外圍圓形其半徑也是國旗寬度的1/8 <br/> int sun_radius = (int)(width/8); <br/> // 中央白日圓形的直徑等於十二道光芒外圍圓形的半徑 <br/> int white_circle_dia = sun_radius; <br/> // 中央藍色圓形半徑為中央白日的 1又 2/15 <br/> int blue_circle_dia = white_circle_dia + white_circle_dia*2/15; <br/> // 根據 https://www.moi.gov.tw/cp.aspx?n=10621 訂定國旗三種顏色值 <br/> red = gdImageColorAllocate(img, 255, 0, 0); // 紅色 <br/> white = gdImageColorAllocate(img, 255, 255, 255); // 白色 <br/> blue = gdImageColorAllocate(img, 0, 0, 149); // 藍色 <br/> // 根據畫布大小塗上紅色長方形區域 <br/> gdImageFilledRectangle(img, 0, 0, width, height, red); <br/> // 青天面積為整面國旗的 1/4, 也是採用長方形塗色 <br/> gdImageFilledRectangle(img, 0, 0, (int)(width/2.0), (int)(height/2.0), blue); <br/> {int x1 = 429; <br/> int y1 = 125; <br/> int x2 = 279; <br/> int y2 = 165;</p>
-<p>// 畫一條線連接兩個點 <br/> gdImageLine(img, x1, y1, x2, y2, white); <br/> } <br/> {int x1 = 170; <br/> int y1 = 274; <br/> int x2 = 279; <br/> int y2 = 165;</p>
-<p>// 畫一條線連接兩個點 <br/> gdImageLine(img, x1, y1, x2, y2, white); <br/> } <br/> { <br/> int x1 = 170; <br/> int y1 = 274; <br/> int x2 = 429; <br/> int y2 = 125;</p>
-<p>// 畫一條線連接兩個點 <br/> gdImageLine(img, x1, y1, x2, y2, white); <br/> } <br/> // 利用一個藍色大圓與白色小圓畫出藍色環狀 <br/> gdImageFilledEllipse(img, center_x, center_y, blue_circle_dia, blue_circle_dia, blue); <br/> gdImageFilledEllipse(img, center_x, center_y, white_circle_dia, white_circle_dia, white);</p>
-<p><br/> // 定義座標結構 <br/> typedef struct { <br/> double x; <br/> double y; <br/> } Point;</p>
-<p>// 計算圓與線的交點 <br/> void circleLineIntersection(double h, double k, double r, double x1, double y1, double x2, double y2) { <br/> // 直線斜率 <br/> double m = (y2 - y1) / (x2 - x1);</p>
-<p>// 直線方程式中的常數項 <br/> double b = y1 - m * x1;</p>
-<p>// 圓與直線交點的計算 <br/> double A = 1 + pow(m, 2); <br/> double B = 2 * (m * b - m * k - h); <br/> double C = pow(k, 2) - pow(r, 2) + pow(h, 2) - 2 * b * k + pow(b, 2);</p>
-<p>// 判斷交點個數 <br/> double discriminant = pow(B, 2) - 4 * A * C; <br/> if (discriminant &gt; 0) { <br/> double x_intersect1 = (-B + sqrt(discriminant)) / (2 * A); <br/> double y_intersect1 = m * x_intersect1 + b; <br/> printf("交點: (%.2f, %.2f)\n", x_intersect1, y_intersect1);</p>
-<p>double x_intersect2 = (-B - sqrt(discriminant)) / (2 * A); <br/> double y_intersect2 = m * x_intersect2 + b; <br/> printf("交點: (%.2f, %.2f)\n", x_intersect2, y_intersect2); <br/> } else if (discriminant == 0) { <br/> double x_intersect = -B / (2 * A); <br/> double y_intersect = m * x_intersect + b; <br/> printf("交點: (%.2f, %.2f)\n", x_intersect, y_intersect); <br/> } else { <br/> printf("No points.\n"); <br/> }</p>
-<p>}</p>
-<p><br/> // 圓的參數 <br/> double circle_x = (int)(width/4); // 圓心 x 座標 <br/> double circle_y = (int)(height/4); // 圓心 y 座標 <br/> double radius = white_circle_dia + white_circle_dia*2/15; // 圓半徑</p>
-<p>// 兩點座標</p>
 <p></p>
-<p>double x3 = 170; <br/> double y3 = 274; <br/> double x4 = 279; <br/> double y4 = 165;</p>
-<p>circleLineIntersection(circle_x, circle_y, radius, x4, y4, x3, y3);</p>
-<p><br/> double x5 = 279; <br/> double y5 = 165; <br/> double x6 = 429; <br/> double y6 = 125;</p>
-<p>circleLineIntersection(circle_x, circle_y, radius, x6, y6, x5, y5);</p>
-<p></p>
-<p></p>
-<p><br/> }</p>
-<p></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);
+
+int main() {
+// width 3: height 2
+int width = 1200;
+// 國旗長寬比為 3:2
+int height = (int)(width*2.0 / 3.0);
+
+gdImagePtr img = gdImageCreateTrueColor(width, height);
+gdImageAlphaBlending(img, 0);
+
+draw_roc_flag(img);
+
+FILE *outputFile = fopen("roc_flag_in_gd.png", "wb");
+if (outputFile == NULL) {
+fprintf(stderr, "Error opening the output file.\n");
+return 1;
+}
+gdImagePngEx(img, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(img);
+return 0;
+}
+
+void draw_roc_flag(gdImagePtr img) {
+int width = gdImageSX(img);
+int height = gdImageSY(img);
+int red, white, blue;
+// 白日位於青天面積正中央, 因此中心點座標為長寬各 1/4 處
+int center_x = (int)(width/4);
+int center_y = (int)(height/4);
+// gdImageFilledEllipse 需以長寬方向的 diameter 作圖
+// 由於中央白日圓形的半徑為青天寬度的 1/8
+// 因此中央白日圓形的直徑為青天寬度的 1/4, 也就是國旗寬度的 1/8
+// 而且白日十二道光芒的外圍圓形其半徑也是國旗寬度的1/8
+int sun_radius = (int)(width/8);
+// 中央白日圓形的直徑等於十二道光芒外圍圓形的半徑
+int white_circle_dia = sun_radius;
+// 中央藍色圓形半徑為中央白日的 1又 2/15
+int blue_circle_dia = white_circle_dia + white_circle_dia*2/15;
+// 根據 https://www.moi.gov.tw/cp.aspx?n=10621 訂定國旗三種顏色值
+red = gdImageColorAllocate(img, 255, 0, 0); // 紅色
+white = gdImageColorAllocate(img, 255, 255, 255); // 白色
+blue = gdImageColorAllocate(img, 0, 0, 149); // 藍色
+// 根據畫布大小塗上紅色長方形區域
+gdImageFilledRectangle(img, 0, 0, width, height, red);
+// 青天面積為整面國旗的 1/4, 也是採用長方形塗色
+gdImageFilledRectangle(img, 0, 0, (int)(width/2.0), (int)(height/2.0), blue);
+{int x1 = 429;
+int y1 = 125;
+int x2 = 279;
+int y2 = 165;
+
+// 畫一條線連接兩個點
+gdImageLine(img, x1, y1, x2, y2, white);
+}
+{int x1 = 170;
+int y1 = 274;
+int x2 = 279;
+int y2 = 165;
+
+// 畫一條線連接兩個點
+gdImageLine(img, x1, y1, x2, y2, white);
+}
+{
+int x1 = 170;
+int y1 = 274;
+int x2 = 429;
+int y2 = 125;
+
+// 畫一條線連接兩個點
+gdImageLine(img, x1, y1, x2, y2, white);
+}
+// 利用一個藍色大圓與白色小圓畫出藍色環狀
+gdImageFilledEllipse(img, center_x, center_y, blue_circle_dia, blue_circle_dia, blue);
+gdImageFilledEllipse(img, center_x, center_y, white_circle_dia, white_circle_dia, white);
+
+
+// 定義座標結構
+typedef struct {
+double x;
+double y;
+} Point;
+
+// 計算圓與線的交點
+void circleLineIntersection(double h, double k, double r, double x1, double y1, double x2, double y2) {
+// 直線斜率
+double m = (y2 - y1) / (x2 - x1);
+
+// 直線方程式中的常數項
+double b = y1 - m * x1;
+
+// 圓與直線交點的計算
+double A = 1 + pow(m, 2);
+double B = 2 * (m * b - m * k - h);
+double C = pow(k, 2) - pow(r, 2) + pow(h, 2) - 2 * b * k + pow(b, 2);
+
+// 判斷交點個數
+double discriminant = pow(B, 2) - 4 * A * C;
+if (discriminant &gt; 0) {
+double x_intersect1 = (-B + sqrt(discriminant)) / (2 * A);
+double y_intersect1 = m * x_intersect1 + b;
+printf("交點: (%.2f, %.2f)\n", x_intersect1, y_intersect1);
+
+double x_intersect2 = (-B - sqrt(discriminant)) / (2 * A);
+double y_intersect2 = m * x_intersect2 + b;
+printf("交點: (%.2f, %.2f)\n", x_intersect2, y_intersect2);
+} else if (discriminant == 0) {
+double x_intersect = -B / (2 * A);
+double y_intersect = m * x_intersect + b;
+printf("交點: (%.2f, %.2f)\n", x_intersect, y_intersect);
+} else {
+printf("No points.\n");
+}
+
+}
+
+
+// 圓的參數
+double circle_x = (int)(width/4); // 圓心 x 座標
+double circle_y = (int)(height/4); // 圓心 y 座標
+double radius = white_circle_dia + white_circle_dia*2/15; // 圓半徑
+
+// 兩點座標
+
+
+
+double x3 = 170;
+double y3 = 274;
+double x4 = 279;
+double y4 = 165;
+
+circleLineIntersection(circle_x, circle_y, radius, x4, y4, x3, y3);
+
+
+double x5 = 279;
+double y5 = 165;
+double x6 = 429;
+double y6 = 125;
+
+circleLineIntersection(circle_x, circle_y, radius, x6, y6, x5, y5);
+
+
+
+
+
+
+}
+
+</pre>
 <p><span>cd downloads</span><br/><span>cc<span> roc_list_coord_flag</span></span><span>.c</span><span><span> </span>-lgd -lm</span><br/><span>./a.out</span></p>
-<p><span><img alt="" height="333" src="data:image/png;base64,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YHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCAANdhc0USQIkQAIkYHUCDHSrO0x9JEACJEACKggw0FXYTJEkQAIkQAJWJ8BAt7rD1EcCJEACJKCCwP8DxBpZ2bpZBc4AAAAASUVORK5CYII=" width="500"/></span></p>
+<p><img alt="" height="333" src="./../images/星球.png" width="500"/></p>
 <p><span></span></p>
 <br />w13 << <a href='w13.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC</div>
         

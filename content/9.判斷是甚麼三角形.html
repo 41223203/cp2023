@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”.html'>1.寫一個 C 程序，用哈希 (#) 列印一個區塊 F，F 的高度為 6 個字符，寬度為 5 個和 4 個字符。列印一個“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='3.列印您的姓名、生日和電話.html'>3.列印您的姓名、生日和電話</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='brython.html'>brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li class='has-children'><a href='ANSIC.html'>ANSIC</a><ul class='dropdown'><li><a href='1.寫一個 C 程序，使用哈希 (#) 列印一個區塊 F，其中 F 的高度為 6 個字符，寬度為 5 個和 4 個字符。並且還列印一個非常大的“C”.html'>1.寫一個 C 程序，使用哈希 (#) 列印一個區塊 F，其中 F 的高度為 6 個字符，寬度為 5 個和 4 個字符。並且還列印一個非常大的“C”</a><li><a href='2.猜數字.html'>2.猜數字</a><li><a href='3.列印您的姓名、生日和電話.html'>3.列印您的姓名、生日和電話</a><li><a href='4.刪除一句字串裡的空格.html'>4.刪除一句字串裡的空格</a><li><a href='5.輸入年份產生日期.html'>5.輸入年份產生日期</a><li><a href='6.建立一個99乘法表.html'>6.建立一個99乘法表</a><li><a href='7.輸入任意數的平方.html'>7.輸入任意數的平方</a><li><a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>8.用C語言編寫一格城市來列印目前日期和時間</a><li><a href='9.判斷是甚麼三角形.html'>9.判斷是甚麼三角形</a><li><a href='10.判斷是否為醜數.html'>10.判斷是否為醜數</a></li></ul><li><a href='C_ex.html'>C_ex</a><li><a href='brython.html'>brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -143,7 +143,35 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">8.用C語言編寫一格城市來列印目前日期和時間 << <a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>Previous</a> <a href='10.判斷是否為醜數.html'>Next</a> >> 10.判斷是否為醜數<br /><h1>9.判斷是甚麼三角形</h1>
-<div class="line number33 index32 alt2"><code class="cpp plain">#include &lt;stdio.h&gt; // 包含標準輸入/輸出的標頭文件。<br/><br/>int main() <br/>{ <br/> int sidea, sideb, sidec; // 宣告三角形的三邊的變數。<br/><br/> /* <br/> * 讀取三角形的三邊長<br/> */ <br/> printf("輸入三角形的三邊長: "); // 提示使用者輸入。<br/> scanf("%d %d %d", &amp;sidea, &amp;sideb, &amp;sidec); // 讀取並儲存三角形的三邊。<br/><br/> if (sidea == sideb &amp;&amp; sideb == sidec) // 檢查是否所有邊都相等。 <br/> { <br/> printf("這是一個等邊三角形。\n"); // 印出等邊三角形的訊息。<br/> } <br/> else if (sidea == sideb || sidea == sidec || sideb == sidec) // 檢查是否有兩邊相等。 <br/> { <br/> printf("這是一個等腰三角形。\n"); // 印出等腰三角形的訊息。<br/> } <br/> else // 如果沒有邊相等。 <br/> { <br/> printf("這是一個不等邊三角形。\n"); // 印出不等邊三角形的訊息。<br/> } <br/><br/> return 0; <br/>}</code></div>
+<div class="line number33 index32 alt2">
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt; // 包含標準輸入/輸出的標頭文件。
+
+int main()
+{
+int sidea, sideb, sidec; // 宣告三角形的三邊的變數。
+
+/*
+* 讀取三角形的三邊長
+*/
+printf("輸入三角形的三邊長: "); // 提示使用者輸入。
+scanf("%d %d %d", &amp;sidea, &amp;sideb, &amp;sidec); // 讀取並儲存三角形的三邊。
+
+if (sidea == sideb &amp;&amp; sideb == sidec) // 檢查是否所有邊都相等。
+{
+printf("這是一個等邊三角形。\n"); // 印出等邊三角形的訊息。
+}
+else if (sidea == sideb || sidea == sidec || sideb == sidec) // 檢查是否有兩邊相等。
+{
+printf("這是一個等腰三角形。\n"); // 印出等腰三角形的訊息。
+}
+else // 如果沒有邊相等。
+{
+printf("這是一個不等邊三角形。\n"); // 印出不等邊三角形的訊息。
+}
+
+return 0;
+}</pre>
+</div>
 <div class="line number33 index32 alt2"><code class="cpp plain"><img alt="" height="233" src="./../images/p9.png" width="500"/></code></div>
 <div class="line number33 index32 alt2"><code class="cpp plain"></code></div>
 <br />8.用C語言編寫一格城市來列印目前日期和時間 << <a href='8.用C語言編寫一格城市來列印目前日期和時間.html'>Previous</a> <a href='10.判斷是否為醜數.html'>Next</a> >> 10.判斷是否為醜數</div>
