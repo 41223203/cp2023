@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,9 +142,26 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w15 << <a href='w15.html'>Previous</a> <a href='1.編寫一個C 程式來取得您正在使用的C 版本.html'>Next</a> >> 1.編寫一個C 程式來取得您正在使用的C 版本<br /><h1>ANSIC</h1>
-<p><span></span></p>
-<br />w15 << <a href='w15.html'>Previous</a> <a href='1.編寫一個C 程式來取得您正在使用的C 版本.html'>Next</a> >> 1.編寫一個C 程式來取得您正在使用的C 版本</div>
+    <div id="tipue_search_content">ANSIC << <a href='ANSIC.html'>Previous</a> <a href='2.猜數字.html'>Next</a> >> 2.猜數字<br /><h1>1.編寫一個C 程式來取得您正在使用的C 版本</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main(int argc, char** argv) {
+    // Check for C standard version
+    #if __STDC_VERSION__ &gt;=  201710L
+        printf("We are using C18!\n");
+    #elif __STDC_VERSION__ &gt;= 201112L
+        printf("We are using C11!\n");
+    #elif __STDC_VERSION__ &gt;= 199901L
+        printf("We are using C99!\n");
+    #else
+        printf("We are using C89/C90!\n");
+    #endif
+
+    // Indicate successful execution
+    return 0;
+}</pre>
+<p><img alt="" height="234" src="./../images/p1更.png" width="500"/></p>
+<br />ANSIC << <a href='ANSIC.html'>Previous</a> <a href='2.猜數字.html'>Next</a> >> 2.猜數字</div>
         
     <!-- footer -->
       <div class="container">

@@ -1,25 +1,17 @@
 #include <stdio.h>
 
-int main() 
-{
-    // Print top line of pattern
-    printf("    ######\n");
+int main(int argc, char** argv) {
+    // Check for C standard version
+    #if __STDC_VERSION__ >=  201710L
+        printf("We are using C18!\n");
+    #elif __STDC_VERSION__ >= 201112L
+        printf("We are using C11!\n");
+    #elif __STDC_VERSION__ >= 199901L
+        printf("We are using C99!\n");
+    #else
+        printf("We are using C89/C90!\n");
+    #endif
 
-    // Print second line of pattern
-    printf("  ##      ##\n");
-
-    // Print lines 3 to 7 of pattern
-    printf(" #\n");
-    printf(" #\n");
-    printf(" #\n");
-    printf(" #\n");
-    printf(" #\n");
-
-    // Print bottom line of pattern
-    printf("  ##      ##\n");
-
-    // Print last line of pattern
-    printf("    ######\n");
-
-    return(0);
+    // Indicate successful execution
+    return 0;
 }
